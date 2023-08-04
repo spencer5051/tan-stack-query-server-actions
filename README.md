@@ -1,7 +1,10 @@
 
 ## Getting Started
 
+Working demo build with Vercel, Drizzle and Supabase. Supports SSR using RSC & Server Actions (NO API ROUTES NEEDED). Working client side queries & mutations. Full type completion.
+
 [Demo with Supabase on Vercel](https://tan-stack-query-server-actions.vercel.app/)
+
 
 [SQLite build](https://github.com/spencer5051/tan-stack-query-server-actions/tree/SQLite-Demo)
 
