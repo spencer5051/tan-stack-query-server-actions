@@ -37,7 +37,7 @@ export default function Home() {
   }
 
   const deleteMutation = useMutation({
-    mutationFn: async (userId: UserId) => {
+    mutationFn: async (userId: string) => {
       await queryClient.cancelQueries(queryKeys.users.list());
       return deleteUser(userId);
     },
@@ -51,7 +51,7 @@ export default function Home() {
     },
   });
 
-  async function onDelete(userId: UserId) {
+  async function onDelete(userId: string) {
     await deleteMutation.mutateAsync(userId);
   }
 
@@ -100,5 +100,3 @@ export default function Home() {
     </>
   );
 }
-
-type UserId = number;

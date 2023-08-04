@@ -1,18 +1,17 @@
 import { Config } from "drizzle-kit";
 import { InferModel } from "drizzle-orm";
-import { primaryKey } from "drizzle-orm/mysql-core";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { pgTable, varchar } from "drizzle-orm/pg-core";
 
-export const users = sqliteTable(
+export const users = pgTable(
   "users",
   {
-    id: integer("id").primaryKey(),
-    name: text("name"),
-    age: text("age"),
+    id: varchar("id", { length: 256 }).primaryKey(),
+    name: varchar("name", { length: 256 }),
+    age: varchar("age", { length: 256 }),
   },
-  (users) => ({
-    id: primaryKey(), // drizzle doesn't seem to initialize the sqlite.db without this for some reason and causes write / access errors.
-  }),
+  // (users) => ({
+  //   id: primaryKey(), // drizzle doesn't seem to initialize the sqlite.db without this for some reason and causes write / access errors.
+  // }),
 );
 
 export type User = InferModel<typeof users>;

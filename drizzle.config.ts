@@ -1,10 +1,14 @@
 import type { Config } from "drizzle-kit";
+require("dotenv").config();
+
+if (!process.env.DATABASE_URL)
+  throw new Error("Must define process.env.DATABASE_URL");
 
 export default {
   schema: "./src/db/schema.ts",
   out: "./src/db/migrations",
-  driver: "better-sqlite",
+  driver: "pg",
   dbCredentials: {
-    url: "./sqlite.db",
+    connectionString: process.env.DATABASE_URL!,
   },
 } satisfies Config;
